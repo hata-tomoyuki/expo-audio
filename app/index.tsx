@@ -7,6 +7,7 @@ import {
   useAudioRecorder,
   useAudioRecorderState,
 } from "expo-audio";
+import { Link } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import {
   Alert,
@@ -170,6 +171,11 @@ export default function VoiceChatScreen() {
       <View style={styles.header}>
         <Text style={styles.title}>VoiceChat Mini</Text>
         <Text style={styles.subtitle}>録音してボイスチャット体験</Text>
+        <Link href="/speech" asChild>
+          <TouchableOpacity style={styles.navLink}>
+            <Text style={styles.navLinkText}>📢 Text-to-Speech へ</Text>
+          </TouchableOpacity>
+        </Link>
       </View>
 
       {/* メッセージリスト */}
@@ -322,5 +328,17 @@ const styles = StyleSheet.create({
   recordHint: {
     fontSize: 12,
     color: "#666",
+  },
+  navLink: {
+    marginTop: 12,
+    padding: 12,
+    backgroundColor: "#007AFF",
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  navLinkText: {
+    color: "#fff",
+    fontSize: 14,
+    fontWeight: "600",
   },
 });
