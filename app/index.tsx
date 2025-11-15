@@ -171,11 +171,18 @@ export default function VoiceChatScreen() {
       <View style={styles.header}>
         <Text style={styles.title}>VoiceChat Mini</Text>
         <Text style={styles.subtitle}>録音してボイスチャット体験</Text>
-        <Link href="/speech" asChild>
-          <TouchableOpacity style={styles.navLink}>
-            <Text style={styles.navLinkText}>📢 Text-to-Speech へ</Text>
-          </TouchableOpacity>
-        </Link>
+        <View style={styles.navLinksContainer}>
+          <Link href="/speech" asChild>
+            <TouchableOpacity style={[styles.navLink, styles.navLinkHalf]}>
+              <Text style={styles.navLinkText}>📢 TTS</Text>
+            </TouchableOpacity>
+          </Link>
+          <Link href="/gemini" asChild>
+            <TouchableOpacity style={[styles.navLink, styles.navLinkHalf]}>
+              <Text style={styles.navLinkText}>🤖 Gemini</Text>
+            </TouchableOpacity>
+          </Link>
+        </View>
       </View>
 
       {/* メッセージリスト */}
@@ -329,12 +336,20 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#666",
   },
-  navLink: {
+  navLinksContainer: {
     marginTop: 12,
+    flexDirection: "row",
+    gap: 8,
+  },
+  navLink: {
     padding: 12,
     backgroundColor: "#007AFF",
     borderRadius: 8,
     alignItems: "center",
+    flex: 1,
+  },
+  navLinkHalf: {
+    flex: 1,
   },
   navLinkText: {
     color: "#fff",

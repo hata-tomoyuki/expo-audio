@@ -109,11 +109,18 @@ export default function SpeechScreen() {
         <View style={styles.header}>
           <Text style={styles.title}>Text-to-Speech</Text>
           <Text style={styles.subtitle}>テキストを音声に変換</Text>
-          <Link href="/" asChild>
-            <TouchableOpacity style={styles.navLink}>
-              <Text style={styles.navLinkText}>← ボイスチャットへ戻る</Text>
-            </TouchableOpacity>
-          </Link>
+          <View style={styles.navLinksContainer}>
+            <Link href="/" asChild>
+              <TouchableOpacity style={[styles.navLink, styles.navLinkHalf]}>
+                <Text style={styles.navLinkText}>← ホーム</Text>
+              </TouchableOpacity>
+            </Link>
+            <Link href="/gemini" asChild>
+              <TouchableOpacity style={[styles.navLink, styles.navLinkHalf]}>
+                <Text style={styles.navLinkText}>🤖 Gemini</Text>
+              </TouchableOpacity>
+            </Link>
+          </View>
         </View>
 
         {/* テキスト入力 */}
@@ -419,12 +426,20 @@ const styles = StyleSheet.create({
     color: "#666",
     marginBottom: 4,
   },
-  navLink: {
+  navLinksContainer: {
     marginTop: 12,
+    flexDirection: "row",
+    gap: 8,
+  },
+  navLink: {
     padding: 12,
     backgroundColor: "#34C759",
     borderRadius: 8,
     alignItems: "center",
+    flex: 1,
+  },
+  navLinkHalf: {
+    flex: 1,
   },
   navLinkText: {
     color: "#fff",
